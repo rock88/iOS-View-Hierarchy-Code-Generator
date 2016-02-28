@@ -17,7 +17,7 @@ Second:
 ![](https://raw.githubusercontent.com/rock88/iOS-View-Hierarchy-Code-Generator/assets/2.png)
 
 Next need import to project `RCKViewHierarchyCodeGenerator` sources, and generate source code for first view controller.
-```
+```objective-c
 #import "RCKViewHierarchyCodeGenerator.h"
 ...
 - (void)viewDidLoad {
@@ -39,7 +39,7 @@ Use `generator.constraintsType` for disable constraints or select preffered cons
 
 From log we can grab view creation code, add it to `-viewDidLoad`:
 
-```
+```objective-c
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -67,7 +67,7 @@ From log we can grab view creation code, add it to `-viewDidLoad`:
 
 For define correct view names set accessibilityLabel for this view in IB. Next work with constraints, `RCKViewHierarchyCodeGenerator` generate constraints creation code (I use Masonry framework for minimalistic code). We need to save this constraints for future use, so add it to `portraitConstraints` array.
 
-```
+```objective-c
     self.portraitConstraints = [NSMutableArray array];
     [self.portraitConstraints addObjectsFromArray:[changeButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(profileImage.mas_bottom).with.offset(8.0f);
@@ -96,7 +96,7 @@ For define correct view names set accessibilityLabel for this view in IB. Next w
 
 Now need generate constraints code for second view controller and add constraints to `landscapeConstraints` array.
 
-```
+```objective-c
     self.landscapeConstraints = [NSMutableArray array];
     [self.landscapeConstraints addObjectsFromArray:[changeButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(profileImage.mas_bottom);
@@ -126,7 +126,7 @@ Now need generate constraints code for second view controller and add constraint
 
 Done! Now for changes design need to activate one constraints array and deactivate other.
 
-```
+```objective-c
 - (void)updateUIDesign {
     if (some state) {
         [self.landscapeConstraints makeObjectsPerformSelector:@selector(deactivate)];
@@ -142,7 +142,7 @@ Done! Now for changes design need to activate one constraints array and deactiva
 
 For UIKit constraints `RCKViewHierarchyCodeGenerator` return code like
 
-```
+```objective-c
     NSArray* constraints =
     @[
       [NSLayoutConstraint constraintWithItem:changeButton
@@ -163,7 +163,7 @@ For UIKit constraints `RCKViewHierarchyCodeGenerator` return code like
 ```
 
 For activate/deactivate use
-```
+```objective-c
 [NSLayoutConstraint activateConstraints:constraints];
 // or
 [NSLayoutConstraint deactivateConstraints:constraints];
