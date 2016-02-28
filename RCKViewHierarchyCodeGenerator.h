@@ -2,7 +2,7 @@
 //  RCKViewHierarchyCodeGenerator.h
 //  iOS-View-Hierarchy-Code-Generator
 //
-//  Created by rock88, file generated at Sun Feb 28 09:16:25 UTC 2016
+//  Created by rock88, file generated at Sun Feb 28 10:20:18 UTC 2016
 //  Copyright © 2016 rock88. All rights reserved.
 //
 
