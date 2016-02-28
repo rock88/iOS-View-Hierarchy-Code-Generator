@@ -102,7 +102,7 @@
     }
     
     for (UIView* subview in view.subviews) {
-        if (![self skipSubviewsForClass:[subview class]]) {
+        if (![self skipSubviewsForClass:[view class]]) {
             [self generateConstraintItemsForView:subview];
         }
     }
